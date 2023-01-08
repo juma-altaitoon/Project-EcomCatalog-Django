@@ -6,22 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0000">
-    <title>E-Commerce</title>
+    <title>NNJM E-Commerce</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </head>
 <body>
     
-<header class="navbar-fixed .gradient-45deg-purple-deep-orange">
+<header class="navbar-fixed .gradient-45deg-blue-grey-blue">
     <nav>
-        <div class = "nav-wrapper">
-            <ul>
-                <li>
-                    <a href="{% url 'home' %}" class="left brand-logo"> &nbsp;&nbsp;E-commerce</a>
-                </li>
+        <div class="nav-wrapper">
+          <a href="{% url 'home' %}" class="brand-logo">Logo</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="{% url 'home' %}" > &nbsp;&nbsp;Home</a></li>
+                    <li><a href="{% url 'about' %}" > &nbsp;&nbsp;About</a></li>
+                    <li><a href="{% url 'order' %}" > &nbsp;&nbsp;Order & Return</a></li>
             </ul>
-
         </div>
     </nav>
 </header>
@@ -29,8 +30,9 @@
         {% block content %}
         {% endblock %}
     </main>
+    
     <footer class = "page-footer">
-        <div class="right">
+        <div class="left">
             All rights reserved, &copy; 2023 NNJM &nbsp;
         </div>
 </footer>
