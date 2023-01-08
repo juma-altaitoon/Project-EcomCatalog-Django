@@ -78,8 +78,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ecom_app',
-        'USER': 'postgres',
-        'PASSWORD':'12345678'
+        'USER': 'maithamalaraibi',
+        'PASSWORD':'123456789'
     }
 }
 
