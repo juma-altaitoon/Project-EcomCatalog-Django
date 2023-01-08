@@ -6,7 +6,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from .models import Product
 
 
 # Create your views here.
@@ -24,3 +24,23 @@ def about(request):
 
 def order(request):
     return render(request, 'order.html')
+
+#  Product CRUD
+class ProductList(ListView):
+    model = Product
+
+class ProductDetail(DetailView):
+    model = Product
+
+
+class ProductCreate(CreateView):
+    model = Product
+    fields = '__all__'
+
+class ProductUpdate(UpdateView):
+    model = Product
+    fields = ['name', 'price', 'description', 'quantity', ]
+
+class ProductDelete(DeleteView):
+    model = Product
+    success_url = '/product/'

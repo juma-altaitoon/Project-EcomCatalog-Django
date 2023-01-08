@@ -8,5 +8,8 @@ urlpatterns = [
     path('order/', views.order, name='order'),
     path('profile/', profile, name='users-profile'),
 
+    # Product CRUD path
+    
+
 ]
 
