@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -77,9 +81,9 @@ WSGI_APPLICATION = 'ecom_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ecom_app',
-        'USER': 'postgres',
-        'PASSWORD':'12345678'
+        'NAME': os.getenv('DATABASENAME'),
+        'USER': os.getenv('DATABASEUSER'),
+        'PASSWORD':os.getenv('DATABASEPASSWORD')
     }
 }
 
@@ -124,3 +128,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

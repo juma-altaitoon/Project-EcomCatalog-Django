@@ -7,9 +7,14 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
+
 # Create your views here.
 
-def home(request):
-    # return HttpResponse('<h1>Hello<h1>')
-    return render(request, 'home.html')
+@login_required
+def profile(request):
+    return render(request, 'users/profile.html')
 
+def home(request):
+    # return HttpResponse('<h1>Ecom App<h1>')
+    return render(request, 'home.html')
