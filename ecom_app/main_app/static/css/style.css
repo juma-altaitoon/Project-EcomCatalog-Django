@@ -1,0 +1,45 @@
+/* body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+footer.page-footer {
+    padding-top: 0;
+    text-align: right;
+    color: black;
+}
+
+.nav-wrapper{
+    background-color:black;
+    }
+     */
+
+     body {
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
+    
+    main{
+        flex: 1 0 auto;
+        color: black;
+        background-color: lightsteelblue;
+    }
+    
+    footer.page-footer {
+        padding-top: 0;
+        text-align: right;
+        /* color: black; */
+        background-color: black;
+    }
+    
+    .flex-container {
+        display: flex;
+        justify-content: space-between;
+      }
+
+    .nav-wrapper{
+     background-color:black;
+     }

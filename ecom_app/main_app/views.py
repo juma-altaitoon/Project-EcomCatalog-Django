@@ -10,8 +10,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 def home(request):
-    # return HttpResponse('<h1>Hello<h1>')
     return render(request, 'home.html')
 
 def about(request):
     return render(request,'about.html' )
+
+def order(request):
+    return render(request, 'order.html')
