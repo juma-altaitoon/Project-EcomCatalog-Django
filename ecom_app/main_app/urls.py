@@ -6,6 +6,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
     path('order/', views.order, name='order'),
+    path('checkout/', views.checkout, name='checkout'),
+    path('products/products/', views.products, name='products'),
     path('profile/', profile, name='users-profile'),
 
     # Product CRUD path
