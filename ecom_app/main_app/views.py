@@ -6,7 +6,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Product
+from .models import Product, Category
 
 
 # Create your views here.
@@ -44,3 +44,23 @@ class ProductUpdate(UpdateView):
 class ProductDelete(DeleteView):
     model = Product
     success_url = '/product/'
+
+
+# Category CRUD
+class CategoryList(ListView):
+    model = Category
+
+class CategoryDetail(DetailView):
+    model = Category
+
+class CategoryCreate(CreateView):
+    model = Category
+    fields = '__all__'
+
+class CategoryUpdate(UpdateView):
+    model = Category
+    fields = '__all__'
+
+class CategoryDelete(DeleteView):
+    model = Category
+    success_url = '/category/'

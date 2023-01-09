@@ -24,6 +24,10 @@ class Profile(models.Model):
         return self.name
 
 # Product Model 
+class Category(models.Model):
+    type = models.CharField(max_length=50)
+    cat_image = models.ImageField(upload_to='main_app/static/category-images/', default="")
+
 class Product(models.Model):
     name = models.CharField(max_length=100)
     price = models.FloatField()
@@ -31,13 +35,10 @@ class Product(models.Model):
     quantity = models.IntegerField()
     image= models.ImageField(upload_to='main_app/static/product-images/', default="")
     sku = models.BigIntegerField()
-    # category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, on_delete= models.CASCADE)
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
         return reverse('product')
-
-class Category(models.Model):
-    type = models.CharField(max_length=50)
