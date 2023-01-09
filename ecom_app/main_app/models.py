@@ -16,7 +16,7 @@ class Profile(models.Model):
     last_name= models.CharField(max_length=100, null=True)
     roles = models.CharField(max_length=50, choices = roles, null=True)
     date = models.DateField(auto_now_add=True)
-    avatar = models.ImageField(default='default.jpg', upload_to='profile_images')
+    avatar = models.ImageField(default='default.jpg', upload_to='main_app/static/profile-images')
     bio = models.TextField()
     # role = models.CharField(max_length=50, choices=roles, default=roles[0][0])
 
@@ -29,11 +29,15 @@ class Product(models.Model):
     price = models.FloatField()
     description = models.TextField(max_length=255)
     quantity = models.IntegerField()
-    image= models.ImageField(upload_to='main_app/static/product-images', default="")
-    sku = models.IntegerField()
+    image= models.ImageField(upload_to='main_app/static/product-images/', default="")
+    sku = models.BigIntegerField()
+    # category = models.ForeignKey(Category)
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('product', kwargs={'pk':self.id})
+        return reverse('product')
+
+class Category(models.Model):
+    type = models.CharField(max_length=50)
