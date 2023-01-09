@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-{% load static %}
+
 <h3> Product Collection</h3>
+
 <div class="row">
 {% for product in product_list %}
     <a href="{% url 'product_details' product.id %}">
 
         <div class="card col s4">
             <div class="card-image">
+                {% load static %}
                 <img width="100px" height="100px" src={% static product.image|cut:'main_app/static/' %} />
             </div>
             <div class="card-content">

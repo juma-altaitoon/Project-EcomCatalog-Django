@@ -4,11 +4,14 @@
 {% block content %}
 {% load static %}
 <h3>Product Page / {{ product.name }}</h3>
-<p>{{product.image}}</p>
 <img width="100px" height="100px" src={% static product.image|cut:'main_app/static/' %} />
 <p>{{product.price}}</p>
 <textarea>{{product.description}}</textarea>
 <p>Quantity : {{ product.quantity }} </p>
+<hr>
+<a href="{% url 'product_update' product.id %}">Edit</a>
+<a href="{% url 'product_delete' product.id %}">Delete</a>
+
 
 
 
