@@ -19,11 +19,35 @@ def home(request):
 
     return render(request, 'home.html')
 
+def profile(request):
+    return render(request, 'profile.html')
+
 def about(request):
     return render(request,'about.html' )
 
 def order(request):
     return render(request, 'order.html')
+
+
+def checkout(request):
+    return render(request, 'chekout.html')
+
+def products(request):
+    return render(request, 'products.html')
+
+# def collection(request):
+#     return render(request, 'collection.html')
+
+# def collections(request):
+#     catagory = Catagory.objects.filter(status=0)
+#     context = {'catagory': catagory}
+#     return render(request, "main_app/products/collections.html", context)
+
+# def CollectionsView(request, slug):
+#     if (Category.objects.filter(slug=slug, status=0)):
+#         products = Product.objects.filter(category__slug=slug)
+#         context = {'products': products}
+#         return render(request, "main_app/products/index.html")
 
 #  Product CRUD
 class ProductList(ListView):
@@ -44,3 +68,4 @@ class ProductUpdate(UpdateView):
 class ProductDelete(DeleteView):
     model = Product
     success_url = '/product/'
+
