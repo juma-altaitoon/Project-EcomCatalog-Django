@@ -28,6 +28,9 @@ def about(request):
 def order(request):
     return render(request, 'order.html')
 
+def chekout(request):
+    return render(request, 'chekout.html')
+
 #  Product CRUD
 class ProductList(ListView):
     model = Product
@@ -47,3 +50,19 @@ class ProductUpdate(UpdateView):
 class ProductDelete(DeleteView):
     model = Product
     success_url = '/product/'
+
+def signup(request):
+    error_message = ""
+    #error message is a must for project 3
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')
+        else:
+            error_message = "Invalid attempt - Try again."
+    
+    form = UserCreationForm()
+    context = {'form': form, ' error_message': error_message}
+    return render(request, 'registration/signup.html', context)

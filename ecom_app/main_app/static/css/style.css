@@ -1,7 +1,7 @@
 
 
      body {
-        background-color: rgb(255, 255, 255);
+        background-color: black  gold yellow ;
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -25,12 +25,12 @@
     
       
     .nav-wrapper{
-     background-color:black;
+     background-color:black  ;
      }
 
      .topnav {
         overflow: hidden;
-        background-color: black;
+        background-color: black ;
       }
 
       .topnav a {
@@ -38,7 +38,7 @@
         display: block;
         color: white;
         text-align: center;
-        padding: 14px 16px;
+        /* padding: 14px 16px; */
         text-decoration: none;
         font-size: 17px;
       }
@@ -63,7 +63,7 @@
         font-size: 17px;
       }
       
-      @media screen and (max-width: 400px) {
+      @media screen and (max-width: 800px) {
         .topnav a, .topnav input[type=text] {
           float: none;
           display: block;
@@ -74,10 +74,6 @@
         }
         
         .topnav input[type=text] {
-          border: 1px solid black;  
+          border: 1px solid rgb(251, 249, 249);  
         }
       }
-
-
-
-  

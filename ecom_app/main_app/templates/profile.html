@@ -2,7 +2,7 @@
 {% block title %}Profile{% endblock %}
     {% block content %}
     <h1> Profile </h1>
-        <hr>
+        {% comment %} <hr>
         <div class="content-section col-lg-12 col-md-12 col-sm-12 tutorial-style" style="min-height:65vh;">
             <legend class="border-bottom mb-4">Profile Information:</legend>
             <form method="POST" enctype="multipart/form-data">
@@ -39,7 +39,7 @@
                     </div>
                 {% endif %}
             </form>
-        </div>
+        </div> {% endcomment %}
 
     {% endblock %}
     
