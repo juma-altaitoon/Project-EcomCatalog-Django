@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Product
 
-
 # Create your views here.
 
 @login_required
@@ -30,6 +29,9 @@ def order(request):
 
 def chekout(request):
     return render(request, 'chekout.html')
+
+def policy(request):
+    return render(request, 'policy.html')
 
 #  Product CRUD
 class ProductList(ListView):
@@ -59,7 +61,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('index')
+            return redirect('home')
         else:
             error_message = "Invalid attempt - Try again."
     

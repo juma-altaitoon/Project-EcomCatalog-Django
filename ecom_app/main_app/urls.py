@@ -8,7 +8,8 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('order/', views.order, name='order'),
     path('chekout/', views.chekout, name='checkout'),
-    path('profile/', profile, name='users-profile'),
+    path('profile/', views.profile, name='users-profile'),
+    path('policy/', views.policy, name='policy'),
 
     # Product CRUD path
     path('product/', views.ProductList.as_view(), name ='product'),
@@ -17,6 +18,11 @@ urlpatterns = [
     path('product/<int:pk>/update/', views.ProductUpdate.as_view(), name = 'product_update'),
     path('product/<int:pk>/delete/', views.ProductDelete.as_view(), name = 'product_delete'),
     path('main_app/users/', views.profile, name='profile'),
+       
+    
+       
+       
+       
         #Sign-up
     path('accouts/signup/', views.signup, name='signup'),
 ]

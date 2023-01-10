@@ -26,6 +26,7 @@
                 <li><a href="{% url 'home' %}" > &nbsp;&nbsp;Home</a></li>
                 <li><a href="{% url 'about' %}" > &nbsp;&nbsp;About</a></li>
                 <li><a href="{% url 'product' %}" > &nbsp;&nbsp;Product</a></li>
+                <li><a href="{% url 'policy' %}" > &nbsp;&nbsp;Policy</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'profile' %}" > &nbsp;&nbsp;Profile</a></li>
                 <li><a href="{% url 'checkout' %}" > &nbsp;&nbsp;Cart</a></li>
@@ -34,7 +35,7 @@
                 <li><a href="{% url 'logout' %}">logout</a></li>
                 {% else %}
                 <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                {% comment %} <li><a href="{% url 'login' %}">Log In</a></li> {% endcomment %}
+                <li><a href="{% url 'login' %}">Log In</a></li>
                 {% endif %}
             </ul>
         </div>
