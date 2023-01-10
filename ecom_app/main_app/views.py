@@ -29,26 +29,11 @@ def about(request):
 def order(request):
     return render(request, 'order.html')
 
-
-def checkout(request):
+def chekout(request):
     return render(request, 'chekout.html')
 
-def products(request):
-    return render(request, 'products.html')
-
-# def collection(request):
-#     return render(request, 'collection.html')
-
-# def collections(request):
-#     catagory = Catagory.objects.filter(status=0)
-#     context = {'catagory': catagory}
-#     return render(request, "main_app/products/collections.html", context)
-
-# def CollectionsView(request, slug):
-#     if (Category.objects.filter(slug=slug, status=0)):
-#         products = Product.objects.filter(category__slug=slug)
-#         context = {'products': products}
-#         return render(request, "main_app/products/index.html")
+def policy(request):
+    return render(request, 'policy.html')
 
 #  Product CRUD
 class ProductList(ListView):
@@ -70,6 +55,21 @@ class ProductDelete(DeleteView):
     model = Product
     success_url = '/product/'
 
+def signup(request):
+    error_message = ""
+    #error message is a must for project 3
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            error_message = "Invalid attempt - Try again."
+    
+    form = UserCreationForm()
+    context = {'form': form, ' error_message': error_message}
+    return render(request, 'registration/signup.html', context)
 
 # Category CRUD
 class CategoryList(ListView):
