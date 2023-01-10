@@ -4,11 +4,13 @@ from .views import profile
 
 urlpatterns = [
     path('', views.home, name='home'),
+    # path('profile/', views.order, name='profile'),
     path('about/', views.about, name='about'),
     path('order/', views.order, name='order'),
-    path('checkout/', views.checkout, name='checkout'),
-    # path('products/products/', views.products, name='products'),
+    path('chekout/', views.chekout, name='checkout'),
     path('profile/', views.profile, name='users-profile'),
+    path('policy/', views.policy, name='policy'),
+
 
     # Product CRUD path
     path('product/', views.ProductList.as_view(), name ='product'),
@@ -16,6 +18,14 @@ urlpatterns = [
     path('product/create/', views.ProductCreate.as_view(), name= 'product_create'),
     path('product/<int:pk>/update/', views.ProductUpdate.as_view(), name = 'product_update'),
     path('product/<int:pk>/delete/', views.ProductDelete.as_view(), name = 'product_delete'),
+
+    path('main_app/users/', views.profile, name='profile'),
+       
+    
+       
+        #Sign-up
+    path('accouts/signup/', views.signup, name='signup'),
+
     # Category CRUD path
     path('category/', views.CategoryList.as_view(), name ='category'),
     path('category/<int:pk>/', views.CategoryDetail.as_view(), name= 'category_details'),
@@ -26,5 +36,6 @@ urlpatterns = [
     path('product/<category>/', views.CategoryProductListView.as_view()),
     # Search path
     path('search/', views.SearchResultView.as_view(), name = 'search_result'),
+
 ]
 
