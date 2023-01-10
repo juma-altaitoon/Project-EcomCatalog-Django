@@ -2,11 +2,14 @@
 
 
 {% block content %}
+
+<br>
+<br>
 <h4>Delete Product?</h4>
 <p>Deleting a product will permanently remove {{product.name}} from collection.</p>
 <form action="" method="post">
     {% csrf_token%}
-    <input type="submit" value="Yes - Delete Product" class="btn red">
+    <input type="submit" value="Yes - Delete Product" class="btn btn blue-grey darken-4">
     <a href="{% url 'product_details' product.id %}" class="btn grey">No - Keep Product</a>
 </form>
 {% endblock %}

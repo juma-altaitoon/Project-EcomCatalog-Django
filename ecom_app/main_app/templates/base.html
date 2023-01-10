@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0000">
     <title>NNJM E-Commerce</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </head>
@@ -16,7 +19,7 @@
 
 <header class="navbar-fixed ">
     <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper blue-grey darken-4">
             
           <a href="{% url 'home' %}" class="brand-logo">Logo</a>
           <div class="topnav">
@@ -47,16 +50,21 @@
 
         
 </header>
-    <main class="container">
+    <main class="container center-align grey lighten-5">
         {% block content %}
 
 
 
 
         {% endblock %}
+        <br>
+    <br>
+    <br>
+    <br>
     </main>
+    
 
-    <footer class = "page-footer">
+    <footer class = "page-footer blue-grey darken-4" >
         <div class="left">
             All rights reserved, &copy; 2023 NNJM &nbsp;
         </div>
