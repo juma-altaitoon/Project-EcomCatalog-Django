@@ -3,15 +3,15 @@
 
 {% block content %}
 {% load static %}
-<h3> {{ category.type }}</h3>
-<img width="100px" height="100px" src={% static category.cat_image|cut:'main_app/static/' %} />
-
-<hr>
-<a href="{% url 'product_update' product.id %}">Edit</a>
-<a href="{% url 'product_delete' product.id %}">Delete</a>
-
-
-
-
+<div class="card">
+    <div>
+        <img width="100px" height="100px" src={% static category.cat_image|cut:'main_app/static/' %} />
+        <h3> {{ category.type }}</h3>
+    </div>
+    <div>
+        <a href="{% url 'category_update' category.id %}" class="btn">Edit</a>
+        <a href="{% url 'category_delete' category.id %}" class="btn">Delete</a>
+    </div>
+</div>
 
 {% endblock %}

@@ -27,6 +27,12 @@ class Profile(models.Model):
 class Category(models.Model):
     type = models.CharField(max_length=50)
     cat_image = models.ImageField(upload_to='main_app/static/category-images/', default="")
+    
+    def __str__(self):
+        return self.type
+    def get_absolute_url(self):
+        return reverse('category')
+
 
 class Product(models.Model):
     name = models.CharField(max_length=100)

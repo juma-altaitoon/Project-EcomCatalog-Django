@@ -7,13 +7,14 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Product, Category
-
+from django.shortcuts import get_object_or_404
+from django.db.models import Q
 
 # Create your views here.
 
 @login_required
-def profile(request):
-    return render(request, 'users/profile.html')
+# def profile(request):
+#     return render(request, 'users/profile.html')
 
 def home(request):
 
@@ -73,7 +74,7 @@ class ProductDelete(DeleteView):
 # Category CRUD
 class CategoryList(ListView):
     model = Category
-
+    
 class CategoryDetail(DetailView):
     model = Category
 
@@ -88,3 +89,21 @@ class CategoryUpdate(UpdateView):
 class CategoryDelete(DeleteView):
     model = Category
     success_url = '/category/'
+
+class CategoryProductListView(ListView):
+    template_name = 'templates/main_app/products_by_category.html'
+
+    def get_queryset(self):
+        self.category = get_object_or_404(Category, type =self.kwargs['category'])
+        return Product.objects.filter(category = self.category)
+
+class SearchResultView(ListView):
+    model= Product
+    template_name = 'search_result'
+
+    def get_queryset(self):
+        result = self.request.GET.get("search")
+        Product.objects.filter(
+            Q(name__icontains = result)
+        )
+        return object_list
