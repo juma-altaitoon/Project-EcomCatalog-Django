@@ -8,11 +8,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Product, Category
 from django.shortcuts import get_object_or_404
-from django.db.models import Q
+from django.db.models import Q 
 
 # Create your views here.
 
-@login_required
+# @login_required
 # def profile(request):
 #     return render(request, 'users/profile.html')
 
@@ -45,7 +45,7 @@ class ProductDetail(DetailView):
 
 class ProductCreate(CreateView):
     model = Product
-    fields = '__all__'
+    fields = ['name', 'price', 'description', 'quantity', 'image' ,'sku', 'category']
 
 class ProductUpdate(UpdateView):
     model = Product
@@ -78,8 +78,8 @@ class CategoryList(ListView):
 class CategoryDetail(DetailView):
     model = Category
 
-    def get_context_data(self, *args, **kwargs):
-        products = Product.objects.filter(category = self.object)
+    def get_queryset(self, *args, **kwargs):
+        products = Category.objects.get('pk').product_set.all()
         return products
 
 
