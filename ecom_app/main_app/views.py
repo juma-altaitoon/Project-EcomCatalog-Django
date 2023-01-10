@@ -6,14 +6,9 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-<<<<<<< HEAD
-from .models import Product, Profile
-
-=======
 from .models import Product, Category
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
->>>>>>> 92092d1e19108009137a50a4d4c0d61f170fa38e
 
 # Create your views here.
 
@@ -91,6 +86,11 @@ class CategoryList(ListView):
 class CategoryDetail(DetailView):
     model = Category
 
+    def get_context_data(self, *args, **kwargs):
+        products = Product.objects.filter(category = self.object)
+        return products
+
+
 class CategoryCreate(CreateView):
     model = Category
     fields = '__all__'
@@ -103,12 +103,12 @@ class CategoryDelete(DeleteView):
     model = Category
     success_url = '/category/'
 
-class CategoryProductListView(ListView):
-    template_name = 'products_by_category'
-
-    def get_queryset(self):        
-        query = self.request.GET.get("pk")
-        Product.objects.filter(Q(category__icontains = query))
+# class CategoryProductListView(ListView):
+#     template_name = 'products_by_category'
+#     model = Product
+#     def get_queryset(self):   
+#         query = self.request.GET.get("pk")
+#         Product.objects.filter(Q(category__icontains = query))
 
 class SearchResultView(ListView):
     model= Product
