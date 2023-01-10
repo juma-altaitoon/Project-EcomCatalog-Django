@@ -1,18 +1,4 @@
 {% extends 'base.html' %}
-<<<<<<< HEAD
-
-{% block content %}
-
- <h1>Log In</h1>
-
- <form action="{% url 'login' %}" method="post">
-    {% csrf_token %} 
-    {{ form.as_p}}
-    <input type="submit" value="Login" class="btn">
- </form>
-
-{% endblock %}
-=======
 {% block content %}
     
     <h1>Login</h1>
@@ -59,4 +45,3 @@
       </div>
     </section>
 {% endblock %} {% endcomment %}
->>>>>>> 92092d1e19108009137a50a4d4c0d61f170fa38e

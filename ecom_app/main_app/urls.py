@@ -7,20 +7,10 @@ urlpatterns = [
     # path('profile/', views.order, name='profile'),
     path('about/', views.about, name='about'),
     path('order/', views.order, name='order'),
-<<<<<<< HEAD
-    path('checkout/', views.checkout, name='checkout'),
-    path('products/products/', views.products, name='products'),
-    path('profile/', profile, name='users-profile'),
-    path('profiles/<int:profile_id>/', views.profiles_detail, name='detail'),
-    path('profiles/create', views.ProfileCreate.as_view(), name='profiles_create'),
-    path('profiles/<int:pk>/update/', views.ProfileUpdate.as_view(), name='profiles_update'),
-    path('profiles/<int:pk>/delete/', views.ProfileDelete.as_view(), name='profiles_delete'),
-=======
     path('chekout/', views.chekout, name='checkout'),
     path('profile/', views.profile, name='users-profile'),
     path('policy/', views.policy, name='policy'),
 
->>>>>>> 92092d1e19108009137a50a4d4c0d61f170fa38e
 
     # Product CRUD path
     path('product/', views.ProductList.as_view(), name ='product'),

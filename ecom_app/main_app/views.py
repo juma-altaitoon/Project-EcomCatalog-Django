@@ -68,57 +68,6 @@ class ProductDelete(DeleteView):
     model = Product
     success_url = '/product/'
 
-<<<<<<< HEAD
-class ProfileCreate(LoginRequiredMixin, CreateView):
-    model = Profile
-    fields = ['name', 'last_name', 'roles', 'date', 'avatar','bio' ]
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
-
-class ProfileUpdate(LoginRequiredMixin, UpdateView):
-    model = Profile
-    fields = ['avatar', 'bio']
-
-class ProfileDelete(LoginRequiredMixin, DeleteView):
-    model = Profile
-    success_url = '/profiles/'
-
-def home(request):
-    return render(request, 'home.html')
-
-def about(request):
-    return render(request, 'about.html')
-
-@login_required
-def profiles_index(request):
-    profiles = Profile.objects.filter(user=request.user)
-    return render(request, 'profiles/index.html', {'profiles': profiles})
-
-@login_required
-def profiles_detail(request, profile_id):
-    profile = Profile.objects.get(id=profile_id)
-
-    products_profile_doesnt_have = Product.objects.exclude(id__in = profile.products.all().values_list('id'))
-    return render(request, 'profiles/detail.html', {'profile': profile, 'products': products_profile_doesnt_have})
-
-def signup(request):
-    error_message = ""
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('about')
-        else:
-            error_message = "Invalid signup - Please try again later"
-
-    form = UserCreationForm()
-    context = {'form': form, 'error_message': error_message}
-    return render(request, 'registration/signup.html', context )
-=======
 def signup(request):
     error_message = ""
     #error message is a must for project 3
@@ -171,4 +120,3 @@ class SearchResultView(ListView):
             Q(name__icontains = result)
         )
         return object_list
->>>>>>> 92092d1e19108009137a50a4d4c0d61f170fa38e

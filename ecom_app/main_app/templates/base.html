@@ -21,24 +21,6 @@
           <a href="{% url 'home' %}" class="brand-logo">Logo</a>
           <div class="topnav">
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-<<<<<<< HEAD
-           
-            <li><input type="text" placeholder="Search.."></li>
-        {% if user.is_authenticated %}
-            <li><a href="{% url 'home' %}" > &nbsp;&nbsp;Home</a></li>
-            <li><a href="" > &nbsp;&nbsp;Profile</a></li>
-            <li><a href="{% url 'about' %}" > &nbsp;&nbsp;About</a></li>
-            <li><a href="{% url 'products' %}" > &nbsp;&nbsp;Products</a></li>
-            <li><a href="{% url 'order' %}" > &nbsp;&nbsp;Order & Return</a></li>
-            <li><a href="{% url 'checkout' %}" > &nbsp;&nbsp;Cart</a></li>
-            Welcome {{ user.username }}
-        {% else %}
-            <li><a href="{% url 'signup' %}">Sign up</a></li> 
-            <li><a href="{% url 'login' %}">Log In</a></li> 
-        {% endif %}
-        </ul>
-    </div>
-=======
 
             
                 <li><input type="text" placeholder="Search.."></li>
@@ -58,7 +40,6 @@
                 {% endif %}
             </ul>
         </div>
->>>>>>> 92092d1e19108009137a50a4d4c0d61f170fa38e
 
     </div>
 </div>
