@@ -33,7 +33,7 @@ urlpatterns = [
     path('category/<int:pk>/update/', views.CategoryUpdate.as_view(), name = 'category_update'),
     path('category/<int:pk>/delete/', views.CategoryDelete.as_view(), name = 'category_delete'),
     # Products by Category
-    path('product/<category>/', views.CategoryProductListView.as_view(), name = 'product_by_category'),
+    # path('product/<category>/', views.CategoryProductListView.as_view(), name = 'product_by_category'),
     # Search path
     path('search/', views.SearchResultView.as_view(), name = 'search_result'),
 

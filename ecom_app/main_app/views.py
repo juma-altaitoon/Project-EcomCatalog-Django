@@ -78,6 +78,11 @@ class CategoryList(ListView):
 class CategoryDetail(DetailView):
     model = Category
 
+    def get_context_data(self, *args, **kwargs):
+        products = Product.objects.filter(category = self.object)
+        return products
+
+
 class CategoryCreate(CreateView):
     model = Category
     fields = '__all__'
@@ -90,12 +95,12 @@ class CategoryDelete(DeleteView):
     model = Category
     success_url = '/category/'
 
-class CategoryProductListView(ListView):
-    template_name = 'products_by_category'
-
-    def get_queryset(self):        
-        query = self.request.GET.get("pk")
-        Product.objects.filter(Q(category__icontains = query))
+# class CategoryProductListView(ListView):
+#     template_name = 'products_by_category'
+#     model = Product
+#     def get_queryset(self):   
+#         query = self.request.GET.get("pk")
+#         Product.objects.filter(Q(category__icontains = query))
 
 class SearchResultView(ListView):
     model= Product
