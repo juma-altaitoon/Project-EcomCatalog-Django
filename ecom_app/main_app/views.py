@@ -91,11 +91,10 @@ class CategoryDelete(DeleteView):
     success_url = '/category/'
 
 class CategoryProductListView(ListView):
-    template_name = 'templates/main_app/products_by_category.html'
+    template_name = 'products_by_category'
 
-    def get_queryset(self):
-        self.category = get_object_or_404(Category, type =self.kwargs['category'])
-        return Product.objects.filter(category = self.category)
+    def get_queryset(self):        
+        return Product.objects.filter(self.request.category)
 
 class SearchResultView(ListView):
     model= Product
@@ -103,7 +102,7 @@ class SearchResultView(ListView):
 
     def get_queryset(self):
         result = self.request.GET.get("search")
-        Product.objects.filter(
+        object_list = Product.objects.filter(
             Q(name__icontains = result)
         )
         return object_list
