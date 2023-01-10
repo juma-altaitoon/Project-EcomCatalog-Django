@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+<<<<<<< HEAD
 
 {% block content %}
 
@@ -16,5 +17,20 @@
     <input type="submit" class="btn" value="Sign Up">
 </form>
 
+=======
+{% block content %}
+    
+    <h1>Sign-up</h1>
+    {% if error_message %}
+    <p class="red-text">
+        {{ error_message }}
+    </p>
+    {% endif %}
+    <form method="post" action="{% url 'signup' %}" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn" value="Sign Up">
+    </form>
+>>>>>>> 92092d1e19108009137a50a4d4c0d61f170fa38e
 
 {% endblock %}

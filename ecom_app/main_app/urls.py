@@ -4,8 +4,10 @@ from .views import profile
 
 urlpatterns = [
     path('', views.home, name='home'),
+    # path('profile/', views.order, name='profile'),
     path('about/', views.about, name='about'),
     path('order/', views.order, name='order'),
+<<<<<<< HEAD
     path('checkout/', views.checkout, name='checkout'),
     path('products/products/', views.products, name='products'),
     path('profile/', profile, name='users-profile'),
@@ -13,6 +15,12 @@ urlpatterns = [
     path('profiles/create', views.ProfileCreate.as_view(), name='profiles_create'),
     path('profiles/<int:pk>/update/', views.ProfileUpdate.as_view(), name='profiles_update'),
     path('profiles/<int:pk>/delete/', views.ProfileDelete.as_view(), name='profiles_delete'),
+=======
+    path('chekout/', views.chekout, name='checkout'),
+    path('profile/', views.profile, name='users-profile'),
+    path('policy/', views.policy, name='policy'),
+
+>>>>>>> 92092d1e19108009137a50a4d4c0d61f170fa38e
 
     # Product CRUD path
     path('product/', views.ProductList.as_view(), name ='product'),
@@ -21,6 +29,23 @@ urlpatterns = [
     path('product/<int:pk>/update/', views.ProductUpdate.as_view(), name = 'product_update'),
     path('product/<int:pk>/delete/', views.ProductDelete.as_view(), name = 'product_delete'),
 
+    path('main_app/users/', views.profile, name='profile'),
+       
+    
+       
+        #Sign-up
+    path('accouts/signup/', views.signup, name='signup'),
+
+    # Category CRUD path
+    path('category/', views.CategoryList.as_view(), name ='category'),
+    path('category/<int:pk>/', views.CategoryDetail.as_view(), name= 'category_details'),
+    path('category/create/', views.CategoryCreate.as_view(), name= 'category_create'),
+    path('category/<int:pk>/update/', views.CategoryUpdate.as_view(), name = 'category_update'),
+    path('category/<int:pk>/delete/', views.CategoryDelete.as_view(), name = 'category_delete'),
+    # Products by Category
+    path('product/<category>/', views.CategoryProductListView.as_view(), name = 'product_by_category'),
+    # Search path
+    path('search/', views.SearchResultView.as_view(), name = 'search_result'),
 
     path('accounts/signup/', views.signup, name='signup')
 

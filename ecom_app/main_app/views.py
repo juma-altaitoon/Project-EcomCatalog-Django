@@ -6,14 +6,20 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+<<<<<<< HEAD
 from .models import Product, Profile
 
+=======
+from .models import Product, Category
+from django.shortcuts import get_object_or_404
+from django.db.models import Q
+>>>>>>> 92092d1e19108009137a50a4d4c0d61f170fa38e
 
 # Create your views here.
 
 @login_required
-def profile(request):
-    return render(request, 'users/profile.html')
+# def profile(request):
+#     return render(request, 'users/profile.html')
 
 def home(request):
 
@@ -28,26 +34,11 @@ def about(request):
 def order(request):
     return render(request, 'order.html')
 
-
-def checkout(request):
+def chekout(request):
     return render(request, 'chekout.html')
 
-def products(request):
-    return render(request, 'products.html')
-
-# def collection(request):
-#     return render(request, 'collection.html')
-
-# def collections(request):
-#     catagory = Catagory.objects.filter(status=0)
-#     context = {'catagory': catagory}
-#     return render(request, "main_app/products/collections.html", context)
-
-# def CollectionsView(request, slug):
-#     if (Category.objects.filter(slug=slug, status=0)):
-#         products = Product.objects.filter(category__slug=slug)
-#         context = {'products': products}
-#         return render(request, "main_app/products/index.html")
+def policy(request):
+    return render(request, 'policy.html')
 
 
 
@@ -77,6 +68,7 @@ class ProductDelete(DeleteView):
     model = Product
     success_url = '/product/'
 
+<<<<<<< HEAD
 class ProfileCreate(LoginRequiredMixin, CreateView):
     model = Profile
     fields = ['name', 'last_name', 'roles', 'date', 'avatar','bio' ]
@@ -126,3 +118,57 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context )
+=======
+def signup(request):
+    error_message = ""
+    #error message is a must for project 3
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            error_message = "Invalid attempt - Try again."
+    
+    form = UserCreationForm()
+    context = {'form': form, ' error_message': error_message}
+    return render(request, 'registration/signup.html', context)
+
+# Category CRUD
+class CategoryList(ListView):
+    model = Category
+    
+class CategoryDetail(DetailView):
+    model = Category
+
+class CategoryCreate(CreateView):
+    model = Category
+    fields = '__all__'
+
+class CategoryUpdate(UpdateView):
+    model = Category
+    fields = '__all__'
+
+class CategoryDelete(DeleteView):
+    model = Category
+    success_url = '/category/'
+
+class CategoryProductListView(ListView):
+    template_name = 'products_by_category'
+
+    def get_queryset(self):        
+        query = self.request.GET.get("pk")
+        Product.objects.filter(Q(category__icontains = query))
+
+class SearchResultView(ListView):
+    model= Product
+    template_name = 'search_result'
+
+    def get_queryset(self):
+        result = self.request.GET.get("search")
+        object_list = Product.objects.filter(
+            Q(name__icontains = result)
+        )
+        return object_list
+>>>>>>> 92092d1e19108009137a50a4d4c0d61f170fa38e

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+<<<<<<< HEAD
 
 {% block content %}
 
@@ -11,3 +12,51 @@
  </form>
 
 {% endblock %}
+=======
+{% block content %}
+    
+    <h1>Login</h1>
+    <hr/> <br>
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Login" class="btn">
+    </form>
+
+{% endblock %}
+
+{% comment %} {% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <section class="ftco-section contact-section bg-light">
+      <div class="container">
+        <div class="row block-9">
+          <div class="col-md-6 order-md-last d-flex">
+            <form class="bg-white p-5 contact-form" action="{% url 'login' %}" method="post">
+              {% csrf_token %}
+              {% block user_form %}
+              
+              <div class="form-group">
+                {{ form.username }}
+              </div>
+              <div class="form-group">
+                {{ form.password }}
+              </div>
+              <div class="form-group">
+                Don't have any account? Create one <a href="{% url 'login' %}">here</a>.
+                <input type="submit" value="Log In" class="btn">
+              </div>
+
+              {% endblock %}
+            </form>
+          </div>
+          <div class="col-md-6 d-flex">
+          	<div id="map" class="bg-white"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %} {% endcomment %}
+>>>>>>> 92092d1e19108009137a50a4d4c0d61f170fa38e

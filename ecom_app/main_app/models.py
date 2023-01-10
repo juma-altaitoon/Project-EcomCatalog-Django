@@ -29,6 +29,16 @@ class Profile(models.Model):
     def get_absolute_url(self):
         return reverse('detail', kwargs={'profile_id': self.id})
 # Product Model 
+class Category(models.Model):
+    type = models.CharField(max_length=50)
+    cat_image = models.ImageField(upload_to='main_app/static/category-images/', default="")
+    
+    def __str__(self):
+        return self.type
+    def get_absolute_url(self):
+        return reverse('category')
+
+
 class Product(models.Model):
     name = models.CharField(max_length=100)
     price = models.FloatField()
@@ -36,15 +46,10 @@ class Product(models.Model):
     quantity = models.IntegerField()
     image= models.ImageField(upload_to='main_app/static/product-images/', default="")
     sku = models.BigIntegerField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    # category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, on_delete= models.CASCADE)
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
         return reverse('product')
-
-class Category(models.Model):
-    type = models.CharField(max_length=50)
