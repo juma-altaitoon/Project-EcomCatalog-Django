@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Profile List</h1>
+
+{% for profile in profiles %}
+
+<div class="card">
+    <a href="{% url 'detail' profile.id %}">
+    <div class="card-content">
+
+        <div class="flex-container">
+
+            <div>
+                    <span class="card-title">{{ profile.name }}</span>
+                    <p>Role: {{ profile.role }} </p>
+                    <p>Bio: {{ profile.Bio }} </p>
+
+                    
+            </div>
+
+            <div>
+                {% load static %}
+                <img width="100px" height="100px" src={% static profile.image|cut:'main_app/static/' %} />
+            </div>
+        </div>
+
+    </div>
+</a>
+</div>
+
+{% endfor %}
+
+{% endblock %}
