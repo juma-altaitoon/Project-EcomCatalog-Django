@@ -7,6 +7,8 @@
     <div>
         <img width="100px" height="100px" src={% static category.cat_image|cut:'main_app/static/' %} />
         <h3> {{ category.type }}</h3>
+        <h4>{{ category.id}}</h4>
+        <h4>{{}}</h4>
     </div>
     <div>
         <a href="{% url 'category_update' category.id %}" class="btn">Edit</a>
