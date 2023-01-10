@@ -94,7 +94,8 @@ class CategoryProductListView(ListView):
     template_name = 'products_by_category'
 
     def get_queryset(self):        
-        return Product.objects.filter(self.request.category)
+        query = self.request.GET.get("pk")
+        Product.objects.filter(Q(category__icontains = query))
 
 class SearchResultView(ListView):
     model= Product
