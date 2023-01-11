@@ -8,12 +8,28 @@
         <img width="100px" height="100px" src={% static category.cat_image|cut:'main_app/static/' %} />
         <h3> {{ category.type }}</h3>
         <h4>{{ category.id}}</h4>
-        <h4>{{}}</h4>
+        
     </div>
     <div>
         <a href="{% url 'category_update' category.id %}" class="btn">Edit</a>
         <a href="{% url 'category_delete' category.id %}" class="btn">Delete</a>
     </div>
 </div>
+{% for product in object.product_set.all %}
+<div class="col s6 m3">
+    <div class="card-image">
+        <img width="100px" height="100px" src={% static product.image|cut:'main_app/static/' %} />
+    </div>
+    <div class="card-title">
+        <h4>{{product.name}}</h4>
+        <p>$ {{product.price}}</p>
+    </div>
+    <div class="card-action">
+        <a href="{% url 'product_update' product.id %}">Edit</a>
+        <a href="{% url 'product_delete' product.id %}">Delete</a>
+    </div>
+</div>
+{% endfor %}
+
 
 {% endblock %}

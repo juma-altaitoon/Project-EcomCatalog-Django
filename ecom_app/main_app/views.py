@@ -79,8 +79,9 @@ class CategoryDetail(DetailView):
     model = Category
 
     # def get_queryset(self, *args, **kwargs):
-    #     products = Product.objects.filter(Category, {'' : id})
-    #     return products
+        
+    #     product_list = Product.objects.filter()
+    #     return product_list
 
 
 class CategoryCreate(CreateView):
