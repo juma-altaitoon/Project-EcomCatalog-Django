@@ -34,6 +34,7 @@
 </div>
 <div class="row">
     {% for product in object.product_set.all %}
+    
 <a href="{% url 'product_details' product.id %}">
 
     <div class="col s6 m3 ">
@@ -44,13 +45,14 @@
             </div>
             <div class="mycard card-content">
                 <span class="card-title ">{{ product.name }}</span>
-                <p>Price: BHD {{ product.price }}</p>   
+                <p>Price: BHD {{ product.price }}</p> 
+                <p>User : {{product.user}}-- {{user.username</p>  
             </div>
         </div>
            
     </div>
 </a>
-     
+
 {% endfor %}
 </div>
 

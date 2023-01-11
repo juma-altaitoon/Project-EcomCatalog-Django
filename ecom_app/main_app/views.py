@@ -166,4 +166,5 @@ class RegisterView(View):
         return object_list
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    products = Product.objects.filter(user=request.user)
+    return render(request, 'dashboard.html', {'product': products})
