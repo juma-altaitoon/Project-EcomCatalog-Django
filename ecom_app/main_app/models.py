@@ -6,6 +6,8 @@ from PIL import Image
 
 
 
+
+
 class Profile(models.Model):
     # user = models.OneToOneField(User, on_delete=models.CASCADE)
     roles = (
@@ -18,11 +20,14 @@ class Profile(models.Model):
     date = models.DateField(auto_now_add=True)
     avatar = models.ImageField(default='default.jpg', upload_to='main_app/static/profile-images')
     bio = models.TextField()
-    # role = models.CharField(max_length=50, choices=roles, default=roles[0][0])
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.name
-
+    
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'profile_id': self.id})
 # Product Model 
 class Category(models.Model):
     type = models.CharField(max_length=50)
