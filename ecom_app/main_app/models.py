@@ -21,10 +21,11 @@ class Profile(models.Model):
     avatar = models.ImageField(default='default.jpg', upload_to='main_app/static/profile-images')
     bio = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
 
     def __str__(self):
-        return self.name
+        return self.name.username
     
     def get_absolute_url(self):
         return reverse('detail', kwargs={'profile_id': self.id})

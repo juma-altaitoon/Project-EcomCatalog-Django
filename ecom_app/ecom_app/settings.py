@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +84,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DATABASENAME'),
         'USER': os.getenv('DATABASEUSER'),
-        'PASSWORD':os.getenv('DATABASEPASSWORD')
+        'PASSWORD':os.getenv('DATABASEPASSWORD'),
+        'HOST': 'db.bit.io',
     }
 }
 
@@ -126,6 +128,7 @@ STATIC_URL = 'static/'
 
 # Login redirect
 LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'login'
 
 # Lognout redirect
 LOGOUT_REDIRECT_URL = '/'
@@ -135,3 +138,12 @@ LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
+
+# email configs
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = str(os.getenv('EMAIL_USER'))
+EMAIL_HOST_PASSWORD = str(os.getenv('EMAIL_PASSWORD'))

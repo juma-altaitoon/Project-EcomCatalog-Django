@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import home, RegisterView
+from .views import home, RegisterView, profile
 
 
 urlpatterns = [
@@ -10,7 +10,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('order/', views.order, name='order'),
     path('chekout/', views.chekout, name='checkout'),
-    path('profile/', views.profile, name='users-profile'),
+    path('profile/', profile, name='profile'),
     path('policy/', views.policy, name='policy'),
 
 
