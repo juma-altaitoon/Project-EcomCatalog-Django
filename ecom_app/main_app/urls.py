@@ -1,9 +1,11 @@
 from django.urls import path
 from . import views
-from .views import profile
+from .views import home, RegisterView
+
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('register/', RegisterView.as_view(), name='register'),
     # path('profile/', views.order, name='profile'),
     path('about/', views.about, name='about'),
     path('order/', views.order, name='order'),
@@ -24,7 +26,7 @@ urlpatterns = [
     
        
         #Sign-up
-    path('accouts/signup/', views.signup, name='signup'),
+    # path('accouts/signup/', views.signup, name='signup'),
 
     # Category CRUD path
     path('category/', views.CategoryList.as_view(), name ='category'),
@@ -37,7 +39,7 @@ urlpatterns = [
     # Search path
     path('search/', views.SearchResultView.as_view(), name = 'search_result'),
 
-    path('accounts/signup/', views.signup, name='signup')
+    # path('accounts/signup/', views.signup, name='signup')
 
 
 ]

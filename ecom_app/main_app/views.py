@@ -9,6 +9,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Product, Category
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
+from django.contrib import messages
+from django.views import View
+from .forms import RegisterForm
 
 # Create your views here.
 
@@ -17,7 +20,6 @@ from django.db.models import Q
 #     return render(request, 'users/profile.html')
 
 def home(request):
-
     return render(request, 'home.html')
 
 def profile(request):
@@ -63,21 +65,21 @@ class ProductDelete(DeleteView):
     model = Product
     success_url = '/product/'
 
-def signup(request):
-    error_message = ""
-    #error message is a must for project 3
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('home')
-        else:
-            error_message = "Invalid attempt - Try again."
+# def signup(request):
+#     error_message = ""
+#     #error message is a must for project 3
+#     if request.method == 'POST':
+#         form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             login(request, user)
+#             return redirect('home')
+#         else:
+#             error_message = "Invalid attempt - Try again."
     
-    form = UserCreationForm()
-    context = {'form': form, ' error_message': error_message}
-    return render(request, 'registration/signup.html', context)
+#     form = UserCreationForm()
+#     context = {'form': form, ' error_message': error_message}
+#     return render(request, 'registration/signup.html', context)
 
 # Category CRUD
 class CategoryList(ListView):
@@ -120,3 +122,25 @@ class SearchResultView(ListView):
             Q(name__icontains = result)
         )
         return object_list
+
+class RegisterView(View):
+    form_class = RegisterForm
+    initial = {'key': 'value'}
+    template_name = 'register.html'
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name , {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}')
+
+            return redirect(to='/')
+
+        return render(request, self.template_name, {'form': form})
