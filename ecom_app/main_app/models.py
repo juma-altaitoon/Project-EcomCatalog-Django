@@ -42,7 +42,7 @@ class Product(models.Model):
     image= models.ImageField(upload_to='main_app/static/product-images/', default="")
     sku = models.BigIntegerField()
     category = models.ForeignKey(Category, on_delete= models.CASCADE)
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
