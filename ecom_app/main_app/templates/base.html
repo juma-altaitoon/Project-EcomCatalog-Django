@@ -29,7 +29,7 @@
                 <li><form action="{% url 'search_result' %}" method="get"><input style="color:#fafafa ;" type="text" placeholder="Search.." name="search"></form></li>
                 <li><a href="{% url 'home' %}" > &nbsp;&nbsp;Home</a></li>
                 <li><a href="{% url 'about' %}" > &nbsp;&nbsp;About</a></li>
-                <li><a href="{% url 'product' %}" > &nbsp;&nbsp;Product</a></li>
+                <li><a href="{% url 'dashboard' %}" > &nbsp;&nbsp;Dashboard</a></li>
                 <li><a href="{% url 'policy' %}" > &nbsp;&nbsp;Policy</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'profile' %}" > &nbsp;&nbsp;Profile</a></li>
@@ -38,7 +38,7 @@
                 welcome {{ user.username}}
                 <li><a href="{% url 'logout' %}">logout</a></li>
                 {% else %}
-                <li><a href="">Sign Up</a></li>
+                <li><a href="{% url 'register' %}">Sign Up</a></li>
                 <li><a href="{% url 'login' %}">Log In</a></li>
                 {% endif %}
             </ul>
