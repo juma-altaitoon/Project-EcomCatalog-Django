@@ -40,7 +40,7 @@ class Product(models.Model):
     description = models.TextField(max_length=255)
     quantity = models.IntegerField()
     image= models.ImageField(upload_to='main_app/static/product-images/', default="")
-    sku = models.BigIntegerField()
+    sku = models.BigIntegerField(max_length=12)
     category = models.ForeignKey(Category, on_delete= models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
