@@ -113,3 +113,20 @@ class SearchResultView(ListView):
             Q(name__icontains = result)
         )
         return object_list
+
+# class CategoyByUserView(ListView):
+#     model= Category
+#     template_name = 'category_user'
+
+#     def get_queryset(self):
+#         object_list = Category.objects.filter(user= self.request.user)
+#         return object_list
+# class ProductByUserView(ListView):
+#     model= Product
+#     template_name = 'product_user'
+
+#     def get_queryset(self):
+#         object_list =Product.objects.filter(user= self.request.user)
+#         return object_list
+def dashboard(request):
+    return render(request, 'dashboard.html')
