@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': os.getenv('DATABASENAME'),
         'USER': os.getenv('DATABASEUSER'),
         'PASSWORD':os.getenv('DATABASEPASSWORD'),
-        'HOST': 'db.bit.io',
+        'HOST': 'db.bit.io'
     }
 }
 
