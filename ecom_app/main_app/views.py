@@ -52,7 +52,7 @@ class ProductDetail(DetailView):
 
 class ProductCreate(CreateView):
     model = Product
-    fields = ['name', 'price', 'description', 'quantity', 'image' ,'sku', 'category']
+    fields = '__all__' # ['name', 'price', 'description', 'quantity', 'image' ,'sku', 'category']
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -124,7 +124,18 @@ class SearchResultView(ListView):
             Q(name__icontains = result)
         )
         return object_list
+# Category filtered by user
+class CategoyByUserView(ListView):
+    model= Category
+    template_name = 'category_user'
 
+    def get_queryset(self):
+        object_list = Category.objects.filter(user= self.request.user)
+        return object_list
+# Products filtered by user
+class ProductByUserView(ListView):
+    model= Product
+    template_name = 'product_user'
 class RegisterView(View):
     form_class = RegisterForm
     initial = {'key': 'value'}
@@ -150,15 +161,9 @@ class RegisterView(View):
 #     model= Category
 #     template_name = 'category_user'
 
-#     def get_queryset(self):
-#         object_list = Category.objects.filter(user= self.request.user)
-#         return object_list
-# class ProductByUserView(ListView):
-#     model= Product
-#     template_name = 'product_user'
+    def get_queryset(self):
+        object_list =Product.objects.filter(user= self.request.user)
+        return object_list
 
-#     def get_queryset(self):
-#         object_list =Product.objects.filter(user= self.request.user)
-#         return object_list
 def dashboard(request):
     return render(request, 'dashboard.html')
