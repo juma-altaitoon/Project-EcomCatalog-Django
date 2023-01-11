@@ -5,7 +5,7 @@
 {% load static %}
 <h3>Product Page / {{ product.name }}</h3>
 <img width="100px" height="100px" src={% static product.image|cut:'main_app/static/' %} />
-<p>${{product.price}}</p>
+<p>BHD {{product.price}}</p>
 <p>{{product.category}}</p>
 <textarea>{{product.description}}</textarea>
 <p>Quantity : {{ product.quantity }} </p>

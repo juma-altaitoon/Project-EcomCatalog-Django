@@ -12,10 +12,11 @@ from django.db.models import Q
 from django.contrib import messages
 from django.views import View
 from .forms import RegisterForm
+from django.db.models import Q 
 
 # Create your views here.
 
-@login_required
+# @login_required
 # def profile(request):
 #     return render(request, 'users/profile.html')
 
@@ -51,7 +52,7 @@ class ProductDetail(DetailView):
 
 class ProductCreate(CreateView):
     model = Product
-    fields = '__all__'
+    fields = ['name', 'price', 'description', 'quantity', 'image' ,'sku', 'category']
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -88,9 +89,10 @@ class CategoryList(ListView):
 class CategoryDetail(DetailView):
     model = Category
 
-    def get_context_data(self, *args, **kwargs):
-        products = Product.objects.filter(category = self.object)
-        return products
+    # def get_queryset(self, *args, **kwargs):
+        
+    #     product_list = Product.objects.filter()
+    #     return product_list
 
 
 class CategoryCreate(CreateView):
@@ -144,3 +146,19 @@ class RegisterView(View):
             return redirect(to='/')
 
         return render(request, self.template_name, {'form': form})
+# class CategoyByUserView(ListView):
+#     model= Category
+#     template_name = 'category_user'
+
+#     def get_queryset(self):
+#         object_list = Category.objects.filter(user= self.request.user)
+#         return object_list
+# class ProductByUserView(ListView):
+#     model= Product
+#     template_name = 'product_user'
+
+#     def get_queryset(self):
+#         object_list =Product.objects.filter(user= self.request.user)
+#         return object_list
+def dashboard(request):
+    return render(request, 'dashboard.html')

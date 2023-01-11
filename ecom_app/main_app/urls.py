@@ -42,5 +42,8 @@ urlpatterns = [
     # path('accounts/signup/', views.signup, name='signup')
 
 
+    # path('category/user/', views.CategoyByUserView.as_view(), 'category_user'),
+    # path('product/user/', views.ProductByUserView.as_view(), 'product_user'),
+    path('dashboard/', views.dashboard, name = 'dashboard'),
 ]
 
