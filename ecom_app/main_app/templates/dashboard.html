@@ -1,25 +1,46 @@
 {%  extends 'base.html' %}
 
 {% block content %}
+<br>
 <h1>{{user.username}}'s Dashboard</h1>
+<br>
+
 <hr>
+
 <div class="row">
-    <div class="card">
-        <div class="card-image"></div>
-        <div class="catrd-title">Category</div>
-        <div class="card-action">
-            <a href="{% url 'category' %}">View All</a>
-            <a href="{% url 'category_create' %}">Add</a>
+    <div class="col s6 m6 ">
+        <div class="card blue-grey darken-4">
+            <div class="card-image"></div>
+            <br>
+            <div 
+            class="catrd-title grey-text text-lighten-5">
+            <h4 >Categories</h4>
+            </div>
+            <br>
+            
+            <div class="card-action">
+                <a href="{% url 'category' %}">View All</a>
+                <a href="{% url 'category_create' %}">Add</a>
+            </div>
         </div>
     </div>
-    <div class="card">
-        <div class="card-image"></div>
-        <div class="catrd-title">Products</div>
-        <div class="card-action">
-            <a href="{% url 'product' %}">View All</a>
-            <a href="{% url 'product_create' %}">Add</a>
+
+    
+    <div class="col s6 m6 ">
+        <div class="card blue-grey darken-4">
+            <div class="card-image"></div>
+            <br>
+            <div class="catrd-title grey-text text-lighten-5
+            ">
+                <h4>Products</h4> </div>
+            <br>
+            <div class="card-action">
+                <a href="{% url 'product' %}">View All</a>
+                <a href="{% url 'product_create' %}">Add</a>
+            </div>
         </div>
     </div>
+    
  
     
 </div>

@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% block title %} Register Page {% endblock title%}
 {% block content %}
-    <div class="form-content my-3 p-3">
+<br>
+<h3 class="font-weight-light my-4 text-center">Create Account</h3>
+<br>
+    <div class="form-content my-3 p-2">
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row">
                 <div class="col-lg-7">
                     <div class="card shadow-lg border-0 rounded-lg mt-0 mb-5">
-                        <div class="card-header justify-content-center">
-                            <h3 class="font-weight-light my-4 text-center">Create Account</h3>
-                        </div>
-                        <div class="card-body">
+                        <div class="card-content">
                             <form method="POST">
                                 {% csrf_token %}
                                 {% if form.errors %}
@@ -74,14 +74,15 @@
                                         </div>
                                     </div>
                                 </div>
+                                <br>
                                 <div class="form-group mt-4 mb-0">
-                                    <button type="submit" class="col-md-12 btn btn-dark">Sign Up</button><br><br>
+                                    <button type="submit" class="btn blue-grey darken-4">Sign Up</button><br><br>
                                 </div>
                             </form>
                         </div>
                         <div class="card-footer text-center">
                             <div class="small">
-                                <a href="#">Have an account? Go to Sign in</a>
+                                <a href="{% url 'login' %}">Have an account? Go to Sign in</a>
 
 
 

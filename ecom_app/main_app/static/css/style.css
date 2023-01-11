@@ -9,6 +9,13 @@
         font-family: 'Oswald', sans-serif;
 
     }
+
+    .category-detail{
+      display: flex;
+      justify-content: center;
+      align-content: space-between;
+
+    }
     
     main{
         flex: 1 0 auto;
@@ -24,7 +31,7 @@
     .flex-container {
         display: flex;
         justify-content: space-between;
-      }
+    }
     
       
     /* .nav-wrapper{
