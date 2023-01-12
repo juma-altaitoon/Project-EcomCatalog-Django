@@ -34,16 +34,11 @@ urlpatterns = [
     path('category/create/', views.CategoryCreate.as_view(), name= 'category_create'),
     path('category/<int:pk>/update/', views.CategoryUpdate.as_view(), name = 'category_update'),
     path('category/<int:pk>/delete/', views.CategoryDelete.as_view(), name = 'category_delete'),
-    # Products by Category
-    # path('product/<category>/', views.CategoryProductListView.as_view(), name = 'product_by_category'),
+   
     # Search path
     path('search/', views.SearchResultView.as_view(), name = 'search_result'),
-
     # path('accounts/signup/', views.signup, name='signup')
-
-
-    # path('category/user/', views.CategoyByUserView.as_view(), 'category_user'),
-    # path('product/user/', views.ProductByUserView.as_view(), 'product_user'),
+    # path('mycategory/<int:pk>', views.MyCategoryDetail.as_view(), name ='my_category_details'),
     path('dashboard/', views.dashboard, name = 'dashboard'),
 ]
 

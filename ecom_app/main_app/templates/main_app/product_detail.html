@@ -30,9 +30,10 @@
                 <br>
           
                 <div class="card-action ">
-
+                    {% if user.id == product.user.id %}
                     <a class="btn blue-grey darken-4" href="{% url 'product_update' product.id %}"><i class="material-icons right">create</i>Edit</a>
                     <a class="btn deep-orange darken-4" href="{% url 'product_delete' product.id %}"><i class="material-icons right">close</i>Delete</a>
+                    {% endif %}
                 </div>
                         
             </div>

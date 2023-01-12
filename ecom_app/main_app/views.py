@@ -56,7 +56,7 @@ class ProductDetail(DetailView):
     model = Product
 
 
-class ProductCreate(CreateView):
+class ProductCreate(LoginRequiredMixin, CreateView):
     model = Product
     fields = '__all__' # ['name', 'price', 'description', 'quantity', 'image' ,'sku', 'category']
 
@@ -64,11 +64,11 @@ class ProductCreate(CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-class ProductUpdate(UpdateView):
+class ProductUpdate(LoginRequiredMixin, UpdateView):
     model = Product
     fields = ['name', 'price', 'description', 'quantity', ]
 
-class ProductDelete(DeleteView):
+class ProductDelete(LoginRequiredMixin, DeleteView):
     model = Product
     success_url = '/product/'
 
@@ -95,21 +95,16 @@ class CategoryList(ListView):
 class CategoryDetail(DetailView):
     model = Category
 
-    # def get_queryset(self, *args, **kwargs):
-        
-    #     product_list = Product.objects.filter()
-    #     return product_list
 
-
-class CategoryCreate(CreateView):
+class CategoryCreate(LoginRequiredMixin, CreateView):
     model = Category
     fields = '__all__'
 
-class CategoryUpdate(UpdateView):
+class CategoryUpdate(LoginRequiredMixin, UpdateView):
     model = Category
     fields = '__all__'
 
-class CategoryDelete(DeleteView):
+class CategoryDelete(LoginRequiredMixin, DeleteView):
     model = Category
     success_url = '/category/'
 
@@ -173,11 +168,10 @@ class RegisterView(View):
 # class CategoyByUserView(ListView):
 #     model= Category
 #     template_name = 'category_user'
-
-    def get_queryset(self):
-        object_list =Product.objects.filter(user= self.request.user)
-        return object_list
-
+    # def get_queryset(self):
+    #     object_list =Product.objects.filter(user= self.request.user)
+    #     return object_list
+@login_required
 def dashboard(request):
     return render(request, 'dashboard.html')
 
@@ -229,3 +223,8 @@ class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'change_password.html'
     success_message = "Successfully Changed Your Password"
     success_url = reverse_lazy('home')
+
+
+# class MyCategoryDetail(DetailView):
+#     model = Category
+#     template_name='my_category_detail.html'
