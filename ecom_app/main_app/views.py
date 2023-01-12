@@ -122,7 +122,7 @@ class SearchResultView(ListView):
     def get_queryset(self):
         result = self.request.GET.get("search")
         object_list = Product.objects.filter(
-            Q(name__icontains = result)
+            Q(name__icontains = result )
         )
         return object_list
 # Category filtered by user
