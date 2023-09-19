@@ -15,8 +15,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+from main_app.views import CustomLoginView  
+from main_app.forms import LoginForm
+from main_app.views import ResetPasswordView
+from django.contrib.auth import views as auth_views
+from main_app.views import ChangePasswordView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('main_app.urls')),
-]
+    path('accounts/',include('django.contrib.auth.urls')),
+    path('password-reset/', ResetPasswordView.as_view(), name='password_reset'),
+    path('password-reset-complete/',auth_views.PasswordResetCompleteView.as_view(template_name='users/password_reset_complete.html'),name='password_reset_complete'),
+    path('login/', CustomLoginView.as_view(redirect_authenticated_user=True, template_name='login.html',
+                                           authentication_form=LoginForm), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
+    path('password-change/', ChangePasswordView.as_view(), name='password_change'),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
